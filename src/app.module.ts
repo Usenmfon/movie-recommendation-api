@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { User, UserSchema } from './auth/schema/auth.schema';
 import { ServiceExceptionFilter } from './helper/exceptions/filters/service.exception';
 import { PaginatePlugin } from './helper/plugin/mongo/pagination.plugin';
+import { SystemModule } from './system/modules/system.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -20,6 +21,7 @@ import { PaginatePlugin } from './helper/plugin/mongo/pagination.plugin';
     }),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     AuthModule,
+    SystemModule,
   ],
   providers: [{ provide: APP_FILTER, useClass: ServiceExceptionFilter }],
 })
